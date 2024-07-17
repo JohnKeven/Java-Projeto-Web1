@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Remover Cliente</title>
+    </h:head>
+    <h:body>
+        <h:form id="Menu">
+            <p:growl id="messages"/>
+            <p:menubar>
+                <p:menuitem value="Inicio" url="http://localhost:8084/ProjetoWeb1/faces/Home.xhtml" />
+                <p:submenu label="Cadastrar">
+                    <p:menuitem value="Administrador" url="http://localhost:8084/ProjetoWeb1/faces/ViewUsuarioADM/CadastroUsuario.xhtml"/>
+                    <p:menuitem value="Empresa" url="http://localhost:8084/ProjetoWeb1/faces/ViewUsuarioADM/CadastrarEmpresa.xhtml"/>
+                    <p:menuitem value="Cliente" url="http://localhost:8084/ProjetoWeb1/faces/ViewUsuarioADM/CadastroCliente.xhtml"/>
+                    <p:menuitem value="Dispositivo" url="http://localhost:8084/ProjetoWeb1/faces/ViewUsuarioADM/CadastrarDispositivo.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Consultar">
+                    <p:menuitem value="Empresas" url="http://localhost:8084/ProjetoWeb1/faces/ViewUsuarioADM/ConsultarEmpresas.xhtml"/>
+                    <p:menuitem value="Clientes" url="http://localhost:8084/ProjetoWeb1/faces/ViewUsuarioADM/ConsultarClientes.xhtml"/>
+                    <p:menuitem value="Dispositivos" url="http://localhost:8084/ProjetoWeb1/faces/ViewUsuarioADM/ConsultarDispositivo.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Deletar">
+                    <p:menuitem value="Empresas" url="http://localhost:8084/ProjetoWeb1/faces/ViewUsuarioADM/RemoverEmpresa.xhtml"/>
+                    <p:menuitem value="Clientes" url="http://localhost:8084/ProjetoWeb1/faces/ViewUsuarioADM/RemoverCliente.xhtml"/>
+                    <p:menuitem value="Dispositivos" url="http://localhost:8084/ProjetoWeb1/faces/ViewUsuarioADM/RemoverDispositivo.xhtml"/>
+                </p:submenu>
+                <p:menuitem value="Sair" url="http://localhost:8084/ProjetoWeb1/faces/index.xhtml"/>
+            </p:menubar>
+        </h:form>
+        
+          <h:form id="RemoverCliente">
+            <h:panelGrid style="position: absolute;">
+                 <p:outputLabel value="Selecione o Cliente: "/>
+                 <p:selectOneMenu value="#{ClienteBean.idCliente}"> 
+                <f:selectItem itemLabel="Select One" noSelectionOption="true"/> 
+                <f:selectItems value="#{ClienteBean.SelectClientes()}" var="a" itemLabel="#{a.nome}"/>
+                </p:selectOneMenu>   
+                 <p:commandButton action="#{ClienteBean.remover()}" value="Excluir" />
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
